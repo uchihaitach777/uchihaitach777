@@ -1,0 +1,33 @@
+```
+let pollForm = document.getElementById('poll-form');
+let pollContainer = document.getElementById('poll-container');
+
+pollForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let pollQuestion = document.getElementById('poll-question').value;
+    let pollOptions = document.getElementById('poll-options').value.split(',');
+    
+    let pollHtml = `
+        <h2>${pollQuestion}</h2>
+        <form id="poll-vote-form">
+    `;
+    
+    pollOptions.forEach((option, index) => {
+        pollHtml += `
+            <div class="poll-option">
+                <input type="radio" id="option-${index}" name="poll-option" value="${option.trim()}">
+                <label for="option-${index}">${option.trim()}</label>
+            </div>
+        `;
+    });
+    
+    pollHtml += `
+            <button id="vote-btn">Vote</button>
+        </form>
+    `;
+    
+    pollContainer.innerHTML = pollHtml;
+    
+    let voteForm = document.getElementById('poll-vote-form');
+    voteForm.addEventListener('submit',
+```
